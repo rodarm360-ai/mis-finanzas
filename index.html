@@ -263,28 +263,12 @@ import { getFirestore, doc, getDoc, setDoc, onSnapshot }
 //  🔥 CONFIGURACIÓN FIREBASE — LLENA ESTOS DATOS (ver GUIA.html)
 // ══════════════════════════════════════════════════════════
 const firebaseConfig = {
-  apiKey: "// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
   apiKey: "AIzaSyCagwTs5xTv7gTAdj4gVt0Jfp0Cg5JV5oU",
   authDomain: "mis-finanzas-rodrigo.firebaseapp.com",
   projectId: "mis-finanzas-rodrigo",
   storageBucket: "mis-finanzas-rodrigo.firebasestorage.app",
   messagingSenderId: "866021799175",
   appId: "1:866021799175:web:bc9259e5d211068e61c1a2"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);",
-  authDomain: "TU_PROJECT.firebaseapp.com",
-  projectId: "TU_PROJECT_ID",
-  storageBucket: "TU_PROJECT.appspot.com",
-  messagingSenderId: "TU_SENDER_ID",
-  appId: "TU_APP_ID"
 };
 // ══════════════════════════════════════════════════════════
 
@@ -785,7 +769,7 @@ function renderViaje(){
   document.getElementById('viaje-progress').innerHTML=`<div class="sh"><span class="st">Proyección</span></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px"><div style="text-align:center;background:var(--bg2);border-radius:var(--r2);padding:12px"><div style="font-size:10px;color:var(--text3);margin-bottom:3px">% avance</div><div style="font-size:16px;font-weight:600;color:var(--accent);font-family:'DM Mono',monospace">${pct}%</div></div><div style="text-align:center;background:var(--bg2);border-radius:var(--r2);padding:12px"><div style="font-size:10px;color:var(--text3);margin-bottom:3px">Meses restantes</div><div style="font-size:16px;font-weight:600;color:var(--accent);font-family:'DM Mono',monospace">${mesesR}</div></div><div style="text-align:center;background:var(--bg2);border-radius:var(--r2);padding:12px"><div style="font-size:10px;color:var(--text3);margin-bottom:3px">Fecha estimada</div><div style="font-size:12px;font-weight:600;color:var(--amber)">${fechaEst}</div></div></div><div style="background:var(--bg2);border-radius:var(--r2);padding:12px;font-size:13px;color:${animoColor}">${animo}</div>`;
   const abs=STATE.ahorroViaje||[];
   document.getElementById('viaje-abonos').innerHTML=`<div class="sh"><span class="st">Mis apartados</span><span style="font-size:12px;color:var(--green);font-weight:600">${abs.length} registros</span></div>${abs.map((a,i)=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)"><div style="width:34px;height:34px;border-radius:10px;background:rgba(52,211,153,.15);display:flex;align-items:center;justify-content:center;font-size:16px">💰</div><div style="flex:1"><div style="font-size:13px;font-weight:500">${a.d}</div><div style="font-size:11px;color:var(--text3)">${a.f} · ${a.lu}</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;color:var(--green);font-family:'DM Mono',monospace">+${fmt(a.m)}</div><button onclick="eliminarAbono(${i})" style="font-size:10px;color:var(--text3);background:none;border:none;cursor:pointer;margin-top:2px">✕ quitar</button></div></div>`).join('')||'<div style="color:var(--text3);font-size:13px;text-align:center;padding:14px">Sin apartados aún</div>'}`;
-  document.getElementById('viaje-form').innerHTML=`<div class="sh"><span class="st">Registrar nuevo apartado</span></div><div class="fg"><label class="fl">¿Cuánto apartaste? $</label><div class="aw"><span class="ap">$</span><input class="fi ai" type="number" id="vj-monto" placeholder="0" inputmode="decimal" style="height:56px;font-size:22px!important"></div></div><div class="fr"><div class="fg"><label class="fl">Fecha</label><input class="fi" type="date" id="vj-fecha" value="${hoy}"></div><div class="fg"><label class="fl">¿Dónde lo guardaste?</label><select class="fi" id="vj-lugar"><option>Alcancía / sobre</option><option>Cuenta de ahorro</option><option>Efectivo en casa<option>Otro</option></select></div></div><div class="fg"><label class="fl">Nota (opcional)</label><input class="fi" type="text" id="vj-nota" placeholder="Ej: quincena, bono..."></div><button class="bsv" style="background:linear-gradient(135deg,#059669,#34d399)" onclick="registrarAbono()">✈️ Guardar apartado</button>`;
+  document.getElementById('viaje-form').innerHTML=`<div class="sh"><span class="st">Registrar nuevo apartado</span></div><div class="fg"><label class="fl">¿Cuánto apartaste? $</label><div class="aw"><span class="ap">$</span><input class="fi ai" type="number" id="vj-monto" placeholder="0" inputmode="decimal" style="height:56px;font-size:22px!important"></div></div><div class="fr"><div class="fg"><label class="fl">Fecha</label><input class="fi" type="date" id="vj-fecha" value="${hoy}"></div><div class="fg"><label class="fl">¿Dónde lo guardaste?</label><select class="fi" id="vj-lugar"><option>Alcancía / sobre</option><option>Cuenta de ahorro</option><option>Efectivo en casa</option><option>Otro</option></select></div></div><div class="fg"><label class="fl">Nota (opcional)</label><input class="fi" type="text" id="vj-nota" placeholder="Ej: quincena, bono..."></div><button class="bsv" style="background:linear-gradient(135deg,#059669,#34d399)" onclick="registrarAbono()">✈️ Guardar apartado</button>`;
 }
 function registrarAbono(){
   const m=parseFloat(document.getElementById('vj-monto').value)||0;
